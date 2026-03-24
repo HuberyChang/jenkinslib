@@ -22,7 +22,7 @@ pipeline{
     steps{
       script{
         antHome = tool "ANT"
-        sh "${antHome}/bin/ant -v"
+        sh "${antHome}/bin/ant ${buildShell}"
       }
     }
   }
@@ -31,7 +31,7 @@ pipeline{
     steps{
       script{
         gradleHome = tool "Gradle"
-        sh "${gradleHome}/bin/gradle -v"
+        sh "${gradleHome}/bin/gradle ${buildShell}"
       }
     }
   }
