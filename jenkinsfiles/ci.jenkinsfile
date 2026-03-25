@@ -12,7 +12,7 @@ pipeline{
     stage("build"){
       steps{
         script{
-          echo $PATH
+          sh "echo ${env.PATH}"
           mvnHome = tool "M2"
           sh "${mvnHome}/bin/mvn ${buildShell}"
         }
@@ -44,7 +44,7 @@ pipeline{
 stage("nodebuild"){
   steps{
     script{
-      echo $PATH
+      sh "echo ${env.PATH}"
       nodeHome = tool "Node"
       sh "${nodeHome}/bin/node ${buildShell}"
       sh "export NODE_HOME=${nodeHome} && export PATH=\$NODE_HOME/bin:\$PATH ${nodeHome}/bin/npm ${buildShell}"
