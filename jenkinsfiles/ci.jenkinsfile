@@ -45,7 +45,7 @@ stage("nodebuild"){
     script{
       nodeHome = tool "Node"
       sh "${nodeHome}/bin/node ${buildShell}"
-      sh "export NODE_HOME=${nodeHome} && ${nodeHome}/bin/npm ${buildShell}"
+      sh "export NODE_HOME=${nodeHome} && export PATH=\$NODE_HOME/bin:\$PATH ${nodeHome}/bin/npm ${buildShell}"
     }
   }
 }
