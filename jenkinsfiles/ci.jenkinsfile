@@ -2,8 +2,6 @@
 
 string buildShell = "${env.buildShell}"
 
-echo $PATH
-
 pipeline{
   agent{
     node {
@@ -14,6 +12,7 @@ pipeline{
     stage("build"){
       steps{
         script{
+          echo $PATH
           mvnHome = tool "M2"
           sh "${mvnHome}/bin/mvn ${buildShell}"
         }
@@ -45,6 +44,7 @@ pipeline{
 stage("nodebuild"){
   steps{
     script{
+      echo $PATH
       nodeHome = tool "Node"
       sh "${nodeHome}/bin/node ${buildShell}"
       sh "export NODE_HOME=${nodeHome} && export PATH=\$NODE_HOME/bin:\$PATH ${nodeHome}/bin/npm ${buildShell}"
