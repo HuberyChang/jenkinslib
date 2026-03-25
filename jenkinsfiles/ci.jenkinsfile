@@ -2,6 +2,8 @@
 
 string buildShell = "${env.buildShell}"
 
+echo $PATH
+
 pipeline{
   agent{
     node {
